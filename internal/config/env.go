@@ -7,6 +7,11 @@ import (
 	"strings"
 )
 
+type Configuration struct {
+	AppName string `json:"appName"`
+	Port    string `json:"port"`
+}
+
 func Load(envFile *os.File) error {
 	defer envFile.Close()
 
@@ -43,5 +48,14 @@ func Load(envFile *os.File) error {
 		return fmt.Errorf("file is empty: %s", envFile.Name())
 	}
 	// by the time you get here you need to be done with envFile
+
 	return nil
+}
+
+// dev or prod
+func BuildConfiguration() Configuration {
+	return Configuration{
+		AppName: os.Getenv("APP_NAME"),
+		Port:    os.Getenv("PORT"),
+	}
 }
