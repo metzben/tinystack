@@ -12,7 +12,7 @@ type Configuration struct {
 	Port    string `json:"port"`
 }
 
-func Load(envFile *os.File) error {
+func Load(envFile *os.File) (Configuration, error) {
 	defer envFile.Close()
 
 	scanner := bufio.NewScanner(envFile)
@@ -45,15 +45,15 @@ func Load(envFile *os.File) error {
 	}
 
 	if isFileEmpty {
-		return fmt.Errorf("file is empty: %s", envFile.Name())
+		return Configuration{}, fmt.Errorf("file is empty: %s", envFile.Name())
 	}
-	// by the time you get here you need to be done with envFile
 
-	return nil
+	// by the time you get here you need to be done with envFile
+	return buildConfiguration(), nil
 }
 
 // dev or prod
-func BuildConfiguration() Configuration {
+func buildConfiguration() Configuration {
 	return Configuration{
 		AppName: os.Getenv("APP_NAME"),
 		Port:    os.Getenv("PORT"),
