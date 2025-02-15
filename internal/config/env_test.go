@@ -24,7 +24,8 @@ func TestLoad(t *testing.T) {
 	}
 
 	// Test the Load function
-	if err := Load(tmpFile); err != nil {
+	_, err = Load(tmpFile)
+	if err != nil {
 		t.Fatal("Failed to load env file:", err)
 	}
 
