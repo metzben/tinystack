@@ -1,7 +1,6 @@
 package main
 
 import (
-	"net/http"
 	"os"
 
 	"github.com/metzben/tinystack/internal/api"
@@ -29,14 +28,10 @@ func main() {
 		Configuration: configuration,
 	}
 
-	log.Info().Msgf("starting server on port: %s", configuration.Port)
-
-	// new http server
-	mux := http.NewServeMux()
-
 	// start the server
-	err := http.ListenAndServe(":"+configuration.Port, app.BuildRoutes(mux))
-	if err != nil {
-		log.Fatal().Msgf("server bonk err: %s", err)
+	serverErr := app.Serve()
+
+	if serverErr != nil {
+		log.Fatal().Msgf("server bonk err: %s", serverErr)
 	}
 }
