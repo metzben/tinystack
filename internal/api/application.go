@@ -3,9 +3,6 @@ package api
 import (
 	"context"
 	"fmt"
-	"github.com/metzben/tinystack/internal/api/url"
-	"github.com/metzben/tinystack/internal/config"
-	"github.com/rs/zerolog"
 	"net/http"
 	"os"
 	"os/signal"
@@ -13,6 +10,10 @@ import (
 	"sync"
 	"syscall"
 	"time"
+
+	"github.com/metzben/tinystack/internal/api/url"
+	"github.com/metzben/tinystack/internal/config"
+	"github.com/rs/zerolog"
 )
 
 type Application struct {
@@ -82,8 +83,7 @@ func (app *Application) Serve() error {
 	}()
 
 	app.Logger.Info().Msgf("starting prod server on port: %+v", app.Configuration.Port)
-	prodServerErr := srvr.ListenAndServe()
-	if prodServerErr != nil {
+	if prodServerErr := srvr.ListenAndServe(); prodServerErr != nil && prodServerErr != http.ErrServerClosed {
 		return prodServerErr
 	}
 
