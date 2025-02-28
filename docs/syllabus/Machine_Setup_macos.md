@@ -8,10 +8,10 @@ Videos:
 - [Computer Setup - Part 2](https://drive.google.com/file/d/1nEEZySoNoAyqtfuF1KxepFYZGDQgMEBM/view?usp=sharing)
 > Note: To remove wasted time during setup, the video is split into two. Part 2 is a continuation of Part 1.
 
-**Double-Click**
-```text
-Invest time in configuring your machine to optimize your coding workflow. The productivity gains from these small adjustments can significantly enhance your efficiency.
-```
+> [!TIP]
+> Invest time in configuring your machine to optimize your coding 
+> workflow. The productivity gains from these small adjustments can 
+> significantly enhance your efficiency.
 
 #### **Topics covered**
 - MacOS Settings - keyboard, customization, configs
