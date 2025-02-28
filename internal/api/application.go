@@ -23,8 +23,6 @@ type Application struct {
 }
 
 func (app *Application) Home(w http.ResponseWriter, r *http.Request) {
-	app.Logger.Info().Msgf("status code %v", r.Response.StatusCode)
-
 	fmt.Fprintln(w, "yo we have a go app running!")
 }
 
