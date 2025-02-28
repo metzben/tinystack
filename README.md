@@ -11,3 +11,7 @@ Tinystack will include the following:
  * Ansible for misc tasks and Docker deployment
 
  This repository may be in iterative disarray as we teach and then refactor.
+
+## Syllabus
+
+Follow along using our [Tinystack Syllabus](/docs/syllabus.md).
