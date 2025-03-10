@@ -4,8 +4,8 @@ This provides a step-by-step process for how you may wish to set up your develop
 The process to set up your machine will be similar if you are using a Windows or Linus machine, but the steps may be different. Please raise to the group if you need assistance with those operating systems.
 
 Videos: 
-- [Computer Setup - Part 1](https://drive.google.com/file/d/1nEEZySoNoAyqtfuF1KxepFYZGDQgMEBM/view?usp=sharing)
-- [Computer Setup - Part 2](https://drive.google.com/file/d/1nEEZySoNoAyqtfuF1KxepFYZGDQgMEBM/view?usp=sharing)
+- [Computer Setup - Part 1](https://drive.google.com/file/d/1nEEZySoNoAyqtfuF1KxepFYZGDQgMEBM/view)
+- [Computer Setup - Part 2](https://drive.google.com/file/d/1ITWGaduDoBe0iOCBYXMb6eLYTJ6I8_-k/view)
 > Note: To remove wasted time during setup, the video is split into two. Part 2 is a continuation of Part 1.
 
 > [!TIP]
