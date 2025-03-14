@@ -11,6 +11,10 @@ Tinystack will be developed into a production ready application over time. To ge
 
 - [Machine Setup (macOS) - Jan 2025](/docs/syllabus/Machine_Setup_macos.md)
 
+## Future Topics to Cover
+- HTTP clients with all the bells and whistles (timeouts, retry strategy, etc)
+- Interfaces in Go (& uses in standard library)
+
 ## Topics
 
 ### Go Programming Language
