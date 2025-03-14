@@ -23,12 +23,12 @@ type Application struct {
 }
 
 func (app *Application) Home(w http.ResponseWriter, r *http.Request) {
-	app.Logger.Info().Msgf("status code %v", r.Response.StatusCode)
-
+	app.Logger.Info().Msg("home route hit")
 	fmt.Fprintln(w, "yo we have a go app running!")
 }
 
 func (app *Application) HandleUserName(w http.ResponseWriter, r *http.Request) {
+	app.Logger.Info().Msg("user route hit")
 	name := r.PathValue("name")
 	fmt.Fprintln(w, "yo name is: ", name)
 }
