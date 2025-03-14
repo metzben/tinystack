@@ -16,9 +16,7 @@ Tinystack will be developed into a production ready application over time. To ge
 ### Go Programming Language
 `Go` (golang) is our server-side language for Tinystack. Created within Google, it was released in 2009 and a team within Google still supports the language. It is [open-source](https://go.googlesource.com/go). We'll be diving into a variety of topics about `go` specifically, but also provide guidance on `programming best practices` that will be demonstrated in the language.
 
-#### Go Deep Dives
-- Coming soon
+To learn more about Go, [visit here](/docs/go/go.md).
 
 ### Large Language Models (LLMs) 
-
 Tinystack will retrieve results from one or more LLMs in the application. For a deeper dive into LLMs, [visit here](/docs/syllabus/Large_Language_Models.md).
