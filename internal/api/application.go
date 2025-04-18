@@ -13,6 +13,7 @@ import (
 
 	"github.com/metzben/tinystack/internal/api/url"
 	"github.com/metzben/tinystack/internal/config"
+	"github.com/metzben/tinystack/internal/secrets"
 	"github.com/rs/zerolog"
 )
 
@@ -20,6 +21,7 @@ type Application struct {
 	Logger        zerolog.Logger
 	Configuration config.Configuration
 	sync.WaitGroup
+	SecretManager secrets.SecretManager
 }
 
 func (app *Application) Home(w http.ResponseWriter, r *http.Request) {
@@ -31,6 +33,15 @@ func (app *Application) HandleUserName(w http.ResponseWriter, r *http.Request) {
 	app.Logger.Info().Msg("user route hit")
 	name := r.PathValue("name")
 	fmt.Fprintln(w, "yo name is: ", name)
+}
+
+// api endpoint that will accept a user prompt
+func (app *Application) anthropicMessages(w http.ResponseWriter, r *http.Request) {
+	// need to design golang struct for this request
+	// unmarshal json to struct
+	// we need to call the anthropic api
+	// we need marshal the response from anthropic to a golang struct
+	// need to reply with json
 }
 
 func (app *Application) Serve() error {
@@ -87,7 +98,7 @@ func (app *Application) Serve() error {
 		return prodServerErr
 	}
 
-	// this is again a blocking read from the error channel
+	// this is a blocking read from the error channel
 	shuttingErr := <-shutDownErrChan
 	if shuttingErr != nil {
 		return shuttingErr
@@ -95,11 +106,4 @@ func (app *Application) Serve() error {
 
 	app.Logger.Info().Msgf("server has stopped gracefully on port: %+v\n", app.Configuration.Port)
 	return nil
-}
-
-func (app *Application) BuildRoutes(mux *http.ServeMux) *http.ServeMux {
-	mux.HandleFunc(url.Home, app.Home)
-	mux.HandleFunc(url.Users, app.HandleUserName)
-
-	return mux
 }
