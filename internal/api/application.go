@@ -2,7 +2,6 @@ package api
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 	"os"
 	"os/signal"
@@ -11,7 +10,6 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/metzben/tinystack/internal/api/url"
 	"github.com/metzben/tinystack/internal/config"
 	"github.com/metzben/tinystack/internal/secrets"
 	"github.com/rs/zerolog"
@@ -22,26 +20,6 @@ type Application struct {
 	Configuration config.Configuration
 	sync.WaitGroup
 	SecretManager secrets.SecretManager
-}
-
-func (app *Application) Home(w http.ResponseWriter, r *http.Request) {
-	app.Logger.Info().Msg("home route hit")
-	fmt.Fprintln(w, "yo we have a go app running!")
-}
-
-func (app *Application) HandleUserName(w http.ResponseWriter, r *http.Request) {
-	app.Logger.Info().Msg("user route hit")
-	name := r.PathValue("name")
-	fmt.Fprintln(w, "yo name is: ", name)
-}
-
-// api endpoint that will accept a user prompt
-func (app *Application) anthropicMessages(w http.ResponseWriter, r *http.Request) {
-	// need to design golang struct for this request
-	// unmarshal json to struct
-	// we need to call the anthropic api
-	// we need marshal the response from anthropic to a golang struct
-	// need to reply with json
 }
 
 func (app *Application) Serve() error {
