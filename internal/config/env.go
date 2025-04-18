@@ -8,8 +8,9 @@ import (
 )
 
 type Configuration struct {
-	AppName string `json:"appName"`
-	Port    string `json:"port"`
+	AppName      string `json:"appName"`
+	Port         string `json:"port"`
+	GCPProjectID string `json:"gcpProjectId"`
 }
 
 func Load(envFile *os.File) (Configuration, error) {
@@ -55,7 +56,8 @@ func Load(envFile *os.File) (Configuration, error) {
 // dev or prod
 func buildConfiguration() Configuration {
 	return Configuration{
-		AppName: os.Getenv("APP_NAME"),
-		Port:    os.Getenv("PORT"),
+		AppName:      os.Getenv("APP_NAME"),
+		Port:         os.Getenv("PORT"),
+		GCPProjectID: os.Getenv("GCP_PROJECT_ID"),
 	}
 }
