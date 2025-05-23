@@ -8,11 +8,21 @@ import (
 )
 
 type Configuration struct {
-	AppName      string `json:"appName"`
-	Port         string `json:"port"`
-	GCPProjectID string `json:"gcpProjectId"`
+	AppName               string `json:"appName"`
+	Port                  string `json:"port"`
+	GCPProjectID          string `json:"gcpProjectId"`
+	PathToAnthropicAPIKey string `json:"pathToAnthropicApiKey"`
 }
 
+// dev or prod
+func buildConfiguration() Configuration {
+	return Configuration{
+		AppName:               os.Getenv("APP_NAME"),
+		Port:                  os.Getenv("PORT"),
+		GCPProjectID:          os.Getenv("GCP_PROJECT_ID"),
+		PathToAnthropicAPIKey: os.Getenv("ANTHROPIC_API_KEY"),
+	}
+}
 func Load(envFile *os.File) (Configuration, error) {
 	defer envFile.Close()
 
@@ -51,13 +61,4 @@ func Load(envFile *os.File) (Configuration, error) {
 
 	// by the time you get here you need to be done with envFile
 	return buildConfiguration(), nil
-}
-
-// dev or prod
-func buildConfiguration() Configuration {
-	return Configuration{
-		AppName:      os.Getenv("APP_NAME"),
-		Port:         os.Getenv("PORT"),
-		GCPProjectID: os.Getenv("GCP_PROJECT_ID"),
-	}
 }
