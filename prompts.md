@@ -1,6 +1,5 @@
-/**
-PROMPT FOR CURSOR:
-
+PROMPT Templates
+---------------------------------------------------------------
 Could you provide a simple example of using the golang standard library and its http client to call an api endpoint with post data/json.
 
 Do not create a file, do not modify or add code to any file.
@@ -21,6 +20,4 @@ curl https://api.anthropic.com/v1/messages \
         {"role": "user", "content": "Hello, world"}
     ]
 }'
-**/
-
-
+---------------------------------------------------------------
