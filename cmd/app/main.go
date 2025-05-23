@@ -5,6 +5,7 @@ import (
 
 	"github.com/metzben/tinystack/internal/api"
 	"github.com/metzben/tinystack/internal/config"
+	"github.com/metzben/tinystack/internal/secrets"
 	"github.com/rs/zerolog"
 )
 
@@ -23,9 +24,15 @@ func main() {
 		log.Fatal().Err(loadErr).Msg("could not read .env file")
 	}
 
+	secretMgr, secretMgrErr := secrets.NewGoogleSecretsClient(configuration.GCPProjectID)
+	if secretMgrErr != nil {
+		log.Fatal().Err(secretMgrErr).Msg("cannot load secret")
+	}
+
 	app := api.Application{
 		Logger:        log,
 		Configuration: configuration,
+		SecretManager: secretMgr,
 	}
 
 	// start the server
