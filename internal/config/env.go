@@ -12,6 +12,7 @@ type Configuration struct {
 	Port                  string `json:"port"`
 	GCPProjectID          string `json:"gcpProjectId"`
 	PathToAnthropicAPIKey string `json:"pathToAnthropicApiKey"`
+	PathToGeminiAPIKey    string `json:"pathToGeminiApiKey"`
 }
 
 // dev or prod
@@ -21,6 +22,7 @@ func buildConfiguration() Configuration {
 		Port:                  os.Getenv("PORT"),
 		GCPProjectID:          os.Getenv("GCP_PROJECT_ID"),
 		PathToAnthropicAPIKey: os.Getenv("ANTHROPIC_API_KEY"),
+		PathToGeminiAPIKey:    os.Getenv("GEMINI_API_KEY"),
 	}
 }
 func Load(envFile *os.File) (Configuration, error) {
